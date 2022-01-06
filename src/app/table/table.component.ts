@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country.service';
 import { Country } from '../country';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-table',
@@ -12,11 +13,12 @@ export class TableComponent implements OnInit {
   first = 0;
   rows = 5;
 
-  constructor(private countryService: CountryService){}
+  constructor(
+    private countryService: CountryService
+    ){}
   
 
   ngOnInit(){
-    // this.countriesList = this.countryService.getCountries();
     this.countryService.getCountriesHttp().subscribe((resp)=>{
       this.countriesList = resp
     })
@@ -41,4 +43,7 @@ export class TableComponent implements OnInit {
     isFirstPage(): boolean {
         return this.countriesList ? this.first === 0 : true;
     }
+    clear(table: Table) {
+      table.clear();
+  }
 }
