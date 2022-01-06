@@ -1,16 +1,31 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule }         from '@angular/core';
+import { BrowserModule }    from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule }      from '@angular/forms';
 
-import { AppComponent } from './app.component';
+import { TableModule }      from 'primeng/table';
+import { ButtonModule }     from 'primeng/button';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent }     from './app.component';
+import { CountryService }   from './country.service';
+import { TableComponent }   from './table/table.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TableComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TableModule,
+    ButtonModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
