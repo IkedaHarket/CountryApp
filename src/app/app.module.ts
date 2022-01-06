@@ -10,13 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }     from './app.component';
 import { CountryService }   from './country.service';
 import { TableComponent }   from './table/table.component';
+import { TitleComponent } from './title/title.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
