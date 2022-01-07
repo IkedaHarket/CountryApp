@@ -5,7 +5,7 @@ h1{
     font-family: monospace;
     white-space: nowrap;
     border-right: 4px solid;
-    width: 23ch;
+    width: 26ch; /*Caracteres en el titulo*/
     overflow: hidden;
     font-size: 3vw;
     text-align: center;
@@ -20,6 +20,7 @@ h1{
 @keyframes blink{
     50%{border-color: transparent;}
 }
+
 @media screen and (max-width: 750px) {
     h1{
         font-size: 3vh;

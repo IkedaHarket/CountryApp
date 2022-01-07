@@ -1,28 +1,33 @@
 
 <div class="center bg-gray">
+<!-- Titulo Component -->
     <app-title></app-title>
 </div>
+
+
+<!-- Tabla -->
 <div class="card">
-    <p-table #dt2 [value]="countriesList" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-	[rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-customers p-datatable-striped" [paginator]="true"
+    <p-table 
+    #dt1 
+    [value]="countriesList" 
+    dataKey="id" 
+    [rows]="10" 
+    [showCurrentPageReport]="true"
+	[rowsPerPageOptions]="[10,25,50]" 
+    styleClass="p-datatable-customers p-datatable-striped" [paginator]="true"
 	currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-	[globalFilterFields]="['name','country.name','representative.name','status']">
-
-        <!-- <ng-template pTemplate="caption">
-            <div class="p-d-flex">
-                <span class="p-input-icon-left p-ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword" />
-                </span>
-            </div>
-        </ng-template> -->
-
+	[globalFilterFields]="['name','country.name','representative.name','status']"
+    >
+<!-- rowsPerPageOptions no se por que no funciona ↖↖↖↖↖↖ -->
         <ng-template pTemplate="header">
+        <!--Encabezados tabla -->
             <tr>
                 <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
                 <th pSortableColumn="capital">Capital<p-sortIcon field="capital"></p-sortIcon></th>
                 <th pSortableColumn="population">Population<p-sortIcon field="population"></p-sortIcon></th>
             </tr>
+        <!--End Encabezados tabla -->
+    <!-- Filtros -->   
             <tr>
                 <th>
                     <p-columnFilter type="text" field="name"></p-columnFilter>
@@ -35,6 +40,8 @@
                 </th>
             </tr>
         </ng-template>
+    <!--End Filtros -->
+    <!-- Columns -->
         <ng-template pTemplate="body" let-country>
             <tr>
                 <td>{{country.name}}</td>
@@ -42,12 +49,15 @@
                 <td>{{country.population | number}}</td>
             </tr>
         </ng-template>
+    <!--End Columns -->
+    <!-- En caso de no encontrar data-->
         <ng-template pTemplate="emptymessage">
             <tr>
                 <td colspan="5">No customers found.</td>
             </tr>
         </ng-template>
     </p-table>
+
 </div>
 
 

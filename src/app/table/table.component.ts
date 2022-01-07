@@ -10,8 +10,6 @@ import { Table } from 'primeng/table';
 export class TableComponent implements OnInit {
 
   public countriesList:Country[] = [];
-  first = 0;
-  rows = 5;
 
   constructor(
     private countryService: CountryService
@@ -19,31 +17,9 @@ export class TableComponent implements OnInit {
   
 
   ngOnInit(){
+    //Se subscribe al getCountriesHttp() y llena el arreglo countriesList
     this.countryService.getCountriesHttp().subscribe((resp)=>{
       this.countriesList = resp
     })
-  }
-
-  next() {
-    this.first = this.first + this.rows;
-    }
-
-    prev() {
-        this.first = this.first - this.rows;
-    }
-
-    reset() {
-        this.first = 0;
-    }
-
-    isLastPage(): boolean {
-        return this.countriesList ? this.first === (this.countriesList.length - this.rows): true;
-    }
-
-    isFirstPage(): boolean {
-        return this.countriesList ? this.first === 0 : true;
-    }
-    clear(table: Table) {
-      table.clear();
   }
 }
